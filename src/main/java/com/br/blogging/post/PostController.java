@@ -46,16 +46,16 @@ public class PostController {
     }
 
 
-    @DeleteMapping("/{id_post}")
-    public ResponseEntity<String> deletePost(@PathVariable Long id_post) {
-        if (id_post == null) {
+    @DeleteMapping("/{idPost}")
+    public ResponseEntity<String> deletePost(@PathVariable Long idPost) {
+        if (idPost == null) {
             return ResponseEntity.badRequest().body("O ID do post é necessário para o delete");
         }
-        System.out.println("Tentativa de excluir post com ID: " + id_post);
+        System.out.println("Tentativa de excluir post com ID: " + idPost);
 
-        Optional<PostModel> existingPost = postRepository.findById(id_post);
+        Optional<PostModel> existingPost = postRepository.findById(idPost);
         if (existingPost.isPresent()) {
-            postRepository.deleteById(id_post);
+            postRepository.deleteById(idPost);
             return ResponseEntity.ok("Post excluído com sucesso.");
         } else {
             return new ResponseEntity<>("Post não encontrado. Excluir falhou.", HttpStatus.NOT_FOUND);
