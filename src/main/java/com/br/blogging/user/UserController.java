@@ -49,7 +49,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserLoginDTO loginUser){
         UserModel user = userRepository.findByUsernameAndPassword(loginUser.getUsername(), loginUser.getPassword());
 
